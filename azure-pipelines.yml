@@ -10,12 +10,12 @@ stages:
   - stage: BuildApp
     displayName: Build Apps
 
+    pool:
+      vmImage: ubuntu-latest
+
     jobs:
       - job: BuildFrontendApp
         displayName: Build Frontend App
-
-        pool:
-          vmImage: ubuntu-latest
 
         steps:
         - script: echo building frontend app
@@ -37,12 +37,12 @@ stages:
   - stage: DeployDev
     displayName: Deploy to DEV environment
 
+    pool:
+      vmImage: ubuntu-latest
+
     jobs:
       - job: DeployFrontendDev
         displayName: Deploy frontend to DEV
-
-        pool:
-          vmImage: ubuntu-latest
           
         steps:
           - script: echo deploying frontend app to DEV
@@ -53,4 +53,24 @@ stages:
         steps:
           - script: echo deploying backend app to DEV
             displayName: deploy backend app to DEV
+
+  - stage: DeployProd
+    displayName: Deploy to Prod environment
+
+    pool:
+      vmImage: ubuntu-latest
+
+   
+    jobs:
+      - job: DeployFrontendProd
+        displayName: Deploy frontend to PROD
+        steps:
+          - script: echo deploying frontend app to PROD
+            displayName: deploy frontend app to PROD
+ 
+      - job: DeployBackendProd
+        displayName: Deploy backend to PROD
+        steps:
+          - script: echo deploying backend app to PROD
+            displayName: deploy backend app to PROD
   
