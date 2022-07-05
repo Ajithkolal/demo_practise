@@ -3,7 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
- 
+trigger:
+- main
+
 stages:
   - stage: BuildApp
     displayName: Build Apps
@@ -30,3 +32,25 @@ stages:
           displayName: build backend app
         - script: echo running unit tests for backend app
           displayName: unit tests backend
+          
+
+  - stage: DeployDev
+    displayName: Deploy to DEV environment
+
+    jobs:
+      - job: DeployFrontendDev
+        displayName: Deploy frontend to DEV
+
+        pool:
+          vmImage: ubuntu-latest
+          
+        steps:
+          - script: echo deploying frontend app to DEV
+            displayName: deploy frontend app to DEV
+ 
+      - job: DeployBackendDev
+        displayName: Deploy backend to DEV
+        steps:
+          - script: echo deploying backend app to DEV
+            displayName: deploy backend app to DEV
+  
