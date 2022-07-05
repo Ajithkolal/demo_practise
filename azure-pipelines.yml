@@ -11,9 +11,7 @@ stages:
     displayName: Build Apps
 
     pool:
-      vmImage: ubuntu-latest
-      
-      environment: 'Build'  
+      vmImage: ubuntu-latest  
 
     jobs:
       - job: BuildFrontendApp
@@ -42,8 +40,6 @@ stages:
     pool:
       vmImage: ubuntu-latest
 
-      environment: 'Dev'   
-
     jobs:
       - job: DeployFrontendDev
         displayName: Deploy frontend to DEV
@@ -64,9 +60,6 @@ stages:
     pool:
       vmImage: ubuntu-latest
       
-      environment: 'Prod'   
-
-   
     jobs:
       - job: DeployFrontendProd
         displayName: Deploy frontend to PROD
